@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="online.shixun.model.User" table="t_user">
+
+		<id name="userId" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+
+		<property name="username" type="java.lang.String"></property>
+
+		<property name="password" type="java.lang.String"></property>
+		<property name="status" type="java.lang.String"></property>
+
+		<set name="roles" table="t_authorization" cascade="all">
+			<key column="userid"></key>
+			<many-to-many class="online.shixun.model.Role" column="roid"/>
+			<!-- 
+			<one-to-many class="online.shixun.model.Role"/>
+			 -->
+		</set>
+	</class>
+</hibernate-mapping>

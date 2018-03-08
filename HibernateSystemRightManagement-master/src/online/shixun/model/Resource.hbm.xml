@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="online.shixun.model.Resource" table="t_resource">
+	
+		<id name="resourceId" type="java.lang.Integer">
+			<generator class="identity"></generator>
+		</id>
+		
+		<property name="resourceName" type="java.lang.String"></property>
+		
+		<property name="url" type="java.lang.String"></property>
+		
+		<property name="image" type="java.sql.Blob"></property>
+		
+		<property name="description" type="java.lang.String"></property>
+		
+		<set name="roles" table="t_role_res" cascade="all">
+			<key column="resid"></key>
+			<many-to-many class="online.shixun.model.Role" column="roid">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
